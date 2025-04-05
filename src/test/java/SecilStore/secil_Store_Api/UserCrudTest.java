@@ -112,4 +112,15 @@ public class UserCrudTest {
 
         assertEquals(200, response.statusCode());
     }
+    @Test
+    public void getUserWithInvalidIdTest() {
+        Response response = given()
+                .spec(spec)
+                .when()
+                .get("/users/9999");
+
+        response.prettyPrint();
+
+        assertEquals(404, response.statusCode());
+    }
 }
